@@ -1,0 +1,239 @@
+Definitions
+-----------------------
+Dispatcher- the entry/configuration point for the application.
+Controller- Command pattern object that handles the request and determines which view to route to.
+RequestMapping- the url and request type that a method is tied to.
+ViewResolver- used to locate JSP pages or whatever view we are using.
+Servlet-Config- Configuration file per dispatcher servlet
+
+
+
+new dynamic project
+next
+web.xml
+
+First Spring Project
+---------------------------
+
+first make entity class in a package
+then create an applicationContext.xml file in src
+in this set-
+ <bean id="emp" class="class name">
+<property name="member field name" value="value"></property>
+<property name="other class object" ref="emp2"></property>
+</bean>
+<bean id="emp2" class="cname">
+set properties
+</bean>
+then in MainApp which is same package of other classes.
+create object 
+{
+ApplicationContext context=new ClassPathXmlApplica....("applicationContext.xml");
+Employee emp=(Employee) context.getBean("emp");
+Syso(emp.getName());
+}
+
+
+
+What is IOC Container?
+--it is responsible to instantiate,configure and assemble the dependncies b/w the objects.
+--two IOC containers:
+1) BeanFactory.--
+2)ApplicationContext.--it includes properties of Beanfactory as well as has some extra features like application layer specific context i.e, Web Application
+
+
+1-- BeanFactory interface--implements--> XmlBeanFatory class
+to use it we create the instance of XmlBeanFactory
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------
+Steps for Spring MVC with single view page
+-------------------------------------------
+
+1-Load the spring jar files or add dependencies in the case of Maven
+2-Create the controller class
+3-Provide the entry of controller in the web.xml file
+4-Define the bean in the separate XML file
+5-Display the message in the JSP page
+6-Start the server and deploy the project
+-----------------------------------------------------
+1------Add dependencies if using Maven Project
+
+2--------
+package com.javatpoint;  
+import org.springframework.stereotype.Controller;  
+import org.springframework.web.bind.annotation.RequestMapping;  
+@Controller  
+public class HelloController {  
+@RequestMapping("/")  
+    public String display()  
+    {  
+        return "index";  
+    }     
+}  
+------------------------------------------------------
+3----------web.xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">  
+  <display-name>SpringMVC</display-name>  
+   <servlet>    
+    <servlet-name>spring</servlet-name>    
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>    
+    <load-on-startup>1</load-on-startup>      
+</servlet>    
+<servlet-mapping>    
+    <servlet-name>spring</servlet-name>    
+    <url-pattern>/</url-pattern>    
+</servlet-mapping>    
+</web-app>  
+-------------------------------------------------
+4-------spring-servlet.xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/mvc  
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
+  
+    <!-- Provide support for component scanning -->  
+    <context:component-scan base-package="com.javatpoint" />  
+  
+    <!--Provide support for conversion, formatting and validation -->  
+    <mvc:annotation-driven/>  
+  
+</beans>  
+---------------------------------------------
+5------index.jsp
+<html>  
+<body>  
+<p>Welcome to Spring MVC Tutorial</p>  
+</body>  
+</html> 
+
+
+-----------------------------------------------------
+Steps for Spring MVC with multiple view page
+--------------------------------------------
+
+
+
+1-Load the spring jar files or add dependencies in the case of Maven
+---------------------------------------------------------------
+Add depndencies to pom.xml
+
+--------------------------------------------------------
+2-Create the index.jsp folder(src-new webapp-index.jsp)
+--------------------------------------------------------
+<html>  
+<body>  
+<a href="hello">Click here...</a>  
+</body>  
+</html> 
+
+--------------------------------
+3-Create the controller class
+---------------------------------
+package com.javatpoint;  
+import org.springframework.stereotype.Controller;  
+import org.springframework.web.bind.annotation.RequestMapping;  
+@Controller  
+public class HelloController {  
+@RequestMapping("/hello")  
+    public String redirect()  
+    {  
+        return "viewpage";  
+    }     
+@RequestMapping("/helloagain")  
+public String display()  
+{  
+    return "final";  
+}  
+}  
+
+-----------------------------------------------------
+4-Provide the entry of controller in the web.xml file(src-new webapp-new WEB-INF- web.xml)
+------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">  
+  <display-name>SpringMVC</display-name>  
+   <servlet>    
+    <servlet-name>spring</servlet-name>    
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>    
+    <load-on-startup>1</load-on-startup>      
+</servlet>    
+<servlet-mapping>    
+    <servlet-name>spring</servlet-name>    
+    <url-pattern>/</url-pattern>    
+</servlet-mapping>    
+</web-app> 
+ 
+--------------------------------------------------
+5-Define the bean in the separate XML file (src-new webapp-new WEB-INF- spring-servlet.xml(Spring bean configuration file)
+-----------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:mvc="http://www.springframework.org/schema/mvc"  
+    xsi:schemaLocation="  
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/mvc  
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">  
+  
+    <!-- Provide support for component scanning -->  
+    <context:component-scan base-package="com.javatpoint" />  
+  
+    <!--Provide support for conversion, formatting and validation -->  
+    <mvc:annotation-driven/>  
+<!-- Define Spring MVC view resolver -->  
+<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+        <property name="prefix" value="/WEB-INF/jsp/"></property>  
+        <property name="suffix" value=".jsp"></property>          
+     </bean>  
+</beans>  
+
+--------------------------------------------
+5-Create the other view components (src-new webapp-new WEB-INF-new jsp- viewpage.jsp, final.jsp)
+-----------------------------------------------
+viewpage.jsp
+
+<html>  
+<body>  
+<a href="helloagain">Javatpoint Tutorials</a>  
+</body>  
+</html> 
+ 
+final.jsp
+
+<html>  
+<body>  
+<p>Welcome to Spring MVC Tutorial</p>  
+</body>  
+</html>  
+--------------------------------------------
+6-Start the server and deploy the project
+-----------------------------------------------
+
+
+index-- href==?==HelloController=RequestMapping
+					--method=return=?=jsp page.
+					--jsp page--href==?=HelloController=RequestMapping
+										--Method=return=?=jsp page

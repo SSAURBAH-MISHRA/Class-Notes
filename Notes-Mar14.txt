@@ -1,0 +1,55 @@
+BDD---
+---------
+Gherkins---language(tutorialspoint.com/cucumber/cucumber-gherkins)--test scripts written in this language
+and Cucumber--implementation---test scripts implement using this tool
+
+
+Feature: Book search
+To allow a customer to find his favourite books 
+
+
+
+Gradle ------Hello World
+
+maven--only with java
+gradle-- with every language
+
+Gradle
+HelloWorld
+  src
+    main
+       java
+	 com
+	   capgemini
+		Test.java
+  build.gradle
+
+Test.java
+---------------
+package com.capgemini
+
+public class Test
+{
+public static void main(String[] args)
+{
+system.out.println("hello world");
+}
+}
+
+build.gradle(save in HelloWorld folder)
+-----------------------------------------
+apply plugin:'java'
+apply plugin:'application'
+mainClassName='com.capgemini.Test'
+
+open cmd from location here
+
+>gradle build
+BUILD SUCCESSFUL
+>gradle run
+
+
+here gradle software is required--gradle 2.14--set the path upto bin
+in cmd-> gradle
+
+buildship---Plugin name of gradle 

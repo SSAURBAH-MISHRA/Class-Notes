@@ -1,0 +1,39 @@
+Selenium
+-----------
+It is a automation testing tool.
+It is a suite of software tool to automate web browsers.
+open souce and mainly used for functional testing and regression testing.
+
+Advantages of Automation testing over Manual testing--
+-------------------------------------------------------
+faster execution
+more accurate
+lesser investment in human resource
+supprts regression testing
+frequent executions
+
+Locator Techniques-
+--------------------
+Id
+name
+tagname
+cssSelector
+linkText
+partialLinkText
+xpath
+
+right click--> inspect element
+
+how to open any website using Selenium
+
+public void invokeBrowser()
+{
+System.setProperty("webdriver.chrome.driver","d:.....");
+//add selenium client jar file version 3.15.0(can take any version)
+driver=new ChromeDriver();
+driver.manage().deleteAllCookies();
+		.windoW().maximize();
+		.timeouts().pageloadTimeout(30,TimeUnit,..Seconds);
+driver.get("http://www.edureka.co");
+searchCourse();
+}

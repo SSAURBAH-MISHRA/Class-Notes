@@ -1,0 +1,25 @@
+Manifesto for Agile
+----------------------
+
+1)
+daily interaction is very important, daily scumity
+recommended skype interaction
+2)
+MVP-Minimum V... Product
+3)
+
+in Scrum meeting ask----
+what done, what doing, what are the challenges?
+at sprint retrospective---
+what good, what bad, improvement?
+
+UserS Story--
+-----------------
+Story
+As a customer
+I want to withdraw cash from an ATM
+so that I dont have to stand in the line at the bank.
+
+1)Activity
+---------------
+requirement gathering-- user story-- as a team discuss--- what software required

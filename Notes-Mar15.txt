@@ -1,0 +1,102 @@
+Devops (Tools)
+---------------
+-Github-It is a distributed repository
+-Sonarqube
+-Jenkins
+
+Github
+------------------------------
+Command from creating local repository
+----------------------------------------
+command name : 
+
+1-git init
+Initialised.....
+2-git pull (Link.git) from github--while downloading that link( to get the project from the server side)
+
+3-git add * --- if want to add number of projects
+
+4-git add (Project name)(ex. BankApplication)
+(git status-- to see which files are not committed)
+
+5-git commit -m ("message") (ex. "bank app")
+
+6-git push (Link.git) master---(same link as above)
+
+
+Branching and Merging
+-------------------------
+Master--- A B C
+Feature---A B C (new)D
+
+edit the ReadMe
+comment
+Branch: master-->Feature-->Enter-->add more line to Readme
+
+set Branch: Master-->pull requests--> create new pull req--> merge--> confirm merge
+
+------------------------------------------------
+1)Upload project through STS (Blank Repo)
+2)Modify the Project
+3)As a team 
+  Upload the project.
+
+
+From STS to Github Repository
+------------------------------
+
+create a blank repository at github without Readme.md
+
+in STS--> rght clck on project--> team--> share project
+--> create Local repository--> add folder--> finish
+
+Window-->Show View--> Other--> search git--> open Git Repositories and Git Staging--> Go to both windows--> move all/particular files from unstaged to staged changes--> commit message--> Commit
+
+Right clck on project--> Team--> Push Branch 'master'--> paste URI of github repository--> review--> Push
+
+Review the Project at Github Repo.
+
+add all commit
+
+remote create
+
+
+
+
+
+SonarQube
+------------------------------
+
+It is a code analysis tool
+
+
+
+Jenkins.war
+>java -jar jenkins.war --httpPort:8888
+
+Password: 6998caecc27944c29e867a9b00712975
+
+install Plugins
+1)
+install suggsted plugins
+if not then
+2)installed or available
+if not then 
+3) Add from google and upload plugin
+
+
+manage jenkin > Global tool Configuration > JDK installations >Name: any
+							      > path:
+>Git
+>Gradle
+>save
+
+
+Creating a Job
+--------------
+New Item > Project Name > FreeStyle Project > 
+Source Code Management > Git > Repository URL
+
+Build > Invoke gradle script > Gradle version > Root build script > Filename/ > save
+
+Build now > build successful > back to project

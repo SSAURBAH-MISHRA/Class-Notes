@@ -1,0 +1,7 @@
+1) XPath
+2) Selenium using BDD, Gherkin
+3) MCQs
+4) Lab Assignments. 
+
+
+POM in Selenium
